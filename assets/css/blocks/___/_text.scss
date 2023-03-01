@@ -1,0 +1,60 @@
+.block-text {
+
+  @include fluid(padding-top, 32, 96);
+  @include fluid(padding-bottom, 32, 192);
+  color: var(--color-black);
+
+  .block-content {
+    @include grid-row();
+  }
+
+  .headline {
+    @include grid-column(4);
+    text-transform: uppercase;
+    @include fluid(font-size, 30, 40);
+    color: var(--color-blue-100);
+  }
+
+  .text {
+    @include grid-column(4)
+  }
+
+  .g-link {
+    @include grid-column(4)
+  }
+
+}
+
+@include breakpoint(s) {
+  .block-text {
+
+    .headline {
+      @include grid-column(14, 1)
+    }
+
+    .text {
+      @include grid-column(14, 1)
+    }
+
+    .g-link {
+      @include grid-column(14, 1)
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .block-text {
+
+    .headline {
+      @include grid-column(14, 3)
+    }
+
+    .text {
+      @include grid-column(14, 3)
+    }
+
+    .g-link {
+      @include grid-column(14, 3)
+    }
+  }
+}

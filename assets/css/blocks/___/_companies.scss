@@ -1,0 +1,230 @@
+.block-companies {
+
+  @include fluid(padding, 32, 96, y);
+  color: var(--color-black);
+
+  .block-inner {
+    @include grid-row();
+
+    .block-header {
+      @include grid-column(4);
+    }
+
+    .companies {
+      @include fluid(margin-top, 96, 192);
+      @include grid-column(4);
+    }
+  }
+
+
+  .companies-row {
+    @include grid-row();
+
+    .companies-column {
+      @include grid-column(4, 0, 4);
+
+      &:first-child {
+        .company:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .company {
+    @include fluid(margin-top, 96, 192);
+    @include grid-row();
+
+    .company-media {
+      @include grid-column(4, 0, 4);
+    }
+    .company-content {
+      @include grid-column(4, 0, 4);
+
+    }
+
+    .logo {
+      img {
+        max-width: 128px;
+      }
+    }
+
+    .headline {
+      margin-top: 32px;
+    }
+
+    .link {
+      margin-top: 16px;
+    }
+
+    .contact {
+
+      p:first-child {
+        margin-top: 40px;
+      }
+    }
+
+    .contact-text {
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+      opacity: 0;
+      // overflow-y: auto;
+
+      &[data-visible="true"] {
+        max-height: 500px;
+        transition: opacity 1s ease, max-height 0.4s ease;
+        opacity: 4;
+      }
+    }
+
+    .g-toggle {
+      margin-top: 40px
+    }
+
+  }
+}
+
+@include breakpoint(s) {
+  .block-companies {
+
+    .block-inner {
+      @include grid-row();
+
+      .block-header {
+        @include grid-column(14, 1);
+      }
+
+      .companies {
+        @include grid-column(14, 1);
+      }
+    }
+
+    .companies-row {
+      @include grid-row();
+
+      .companies-column {
+        @include grid-column(14, 0, 14);
+      }
+    }
+
+    .company {
+      @include grid-row();
+
+      .company-media {
+        @include grid-column(14, 0, 14);
+      }
+
+      .company-content {
+        @include grid-column(14, 0, 14);
+
+      }
+    }
+  }
+}
+
+@include breakpoint(m) {
+  .block-companies {
+
+    .block-inner {
+      @include grid-row();
+
+      .block-header {
+        @include grid-column(14, 1);
+      }
+
+      .companies {
+        @include grid-column(12, 1);
+      }
+    }
+
+    .companies-row {
+      @include grid-row();
+
+      .companies-column {
+        @include grid-column(12, 0, 12);
+      }
+    }
+
+    .company {
+      @include grid-row();
+
+      .company-media {
+        @include grid-column(12, 0, 12);
+      }
+
+      .company-content {
+        @include grid-column(12, 0, 12);
+
+      }
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .block-companies {
+
+    .block-inner {
+      @include grid-row();
+
+      .block-header {
+        @include grid-column(18);
+      }
+
+      .companies {
+        @include grid-column(20);
+      }
+    }
+
+    .companies-row {
+      @include grid-row();
+
+      .companies-column {
+        @include grid-column(9, 0, 20);
+      }
+
+      .companies-column + .companies-column {
+        @include grid-column(9, 1, 20);
+
+        .company:first-child {
+          margin-top: 0;
+        }
+
+      }
+    }
+
+    .company {
+      @include grid-row();
+
+      .company-media {
+        @include grid-column(9, 0, 9);
+      }
+
+      .company-content {
+        @include grid-column(9, 0, 9);
+
+      }
+    }
+  }
+}
+
+@include breakpoint(xl) {
+  .block-companies {
+
+    .company {
+      @include grid-row();
+
+      .company-media {
+        @include grid-column(2, 0, 9);
+      }
+
+      .company-content {
+        @include grid-column(7, 0, 9);
+      }
+
+      .headline {
+        margin-top: 0;
+      }
+    }
+  }
+}

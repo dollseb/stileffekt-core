@@ -1,0 +1,129 @@
+.block-intro {
+
+  @include fluid(padding, 80, 200, y);
+
+  .block-content {
+    @include grid-row();
+    @include fluid(font-size, 18, 25);
+  }
+  .block-header {
+    @include grid-row();
+    position: relative;
+  }
+
+  .block-video {
+    padding: 0;
+    @include grid-row();
+  }
+
+  .spinner {
+    @include grid-column(3);
+    transform: translateY(-50%);
+    img {
+      animation: rotation 8s infinite linear;
+      @include fluid(width, 80, 160);
+      max-width: 100%;
+    }
+  }
+  .headline {
+    @include grid-column(4);
+    h1, .h1, h2, .h2, h3,.h3, h4, .h4, h5, .h5, h6, .h6 {
+      color: var(--color-blue-100);
+    }
+  }
+  .text {
+    margin-top: 38px;
+    @include grid-column(4)
+  }
+  .g-link {
+    @include grid-column(4)
+  }
+  .g-video {
+    @include fluid(margin-top, 30, 60);
+    @include grid-column(4)
+  }
+
+  &.block-style-2 {
+    .headline {
+      h1, .h1, h2, .h2, h3,.h3, h4, .h4, h5, .h5, h6, .h6 {
+        color: var(--color-blue-100);
+        @include fluid(font-size, 30, 80);
+      }
+    }
+  }
+}
+
+@include breakpoint(s) {
+  .block-intro {
+    .block-header {
+      .spinner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        @include grid-column(2)
+      }
+      .headline {
+        @include grid-column(12,2)
+      }
+    }
+    .text {
+      @include grid-column(12,2)
+    }
+    .g-link {
+      @include grid-column(12,2)
+    }
+    .g-video {
+      @include grid-column(16)
+    }
+  }
+}
+
+@include breakpoint(m) {
+  .block-intro {
+    .block-header {
+      .spinner {
+        @include grid-column(3)
+      }
+      .headline {
+        @include grid-column(10, 3)
+      }
+    }
+    .text {
+      @include grid-column(10,3)
+    }
+    .g-link {
+      @include grid-column(10,3)
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .block-intro {
+    .block-header {
+      .spinner {
+        @include grid-column(3)
+      }
+      .headline {
+        @include grid-column(14, 3)
+      }
+    }
+    .text {
+      @include grid-column(14,3)
+    }
+    .g-link {
+      @include grid-column(14,3)
+    }
+    .g-video {
+      @include grid-column(16, 2)
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

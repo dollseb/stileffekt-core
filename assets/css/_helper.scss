@@ -1,0 +1,108 @@
+
+:root {
+  --g-media_query: 'viewport: xs';
+}
+@include breakpoint(s) {
+  :root {
+    --g-media_query: 'viewport: s';
+  }
+}
+@include breakpoint(m) {
+  :root {
+    --g-media_query: 'viewport: m';
+  }
+}
+@include breakpoint(l) {
+  :root {
+    --g-media_query: 'viewport: l';
+  }
+}
+@include breakpoint(xl) {
+  :root {
+    --g-media_query: 'viewport: xl';
+  }
+}
+
+
+:root {
+  --grid-color-line: hsla(var(--grid-color), 0.2);
+  --grid-color-column: hsla(var(--grid-color), 0.2);
+  --grid-color-gutter: transparent;
+  --grid-color-baseline: hsla(var(--grid-color), 0.2);
+
+  --line-thickness: 1px;
+  --column-start: 0;
+  --column-start-line: var(--line-thickness);
+  --column-end: calc((100% / var(--grid-columns)) - var(--grid-gutter) - var(--line-thickness));
+  --column-end-line: calc((100% / var(--grid-columns)) - var(--grid-gutter));
+  --gutter-end: calc(100% / var(--grid-columns));
+
+  --g-gradient-column:
+          repeating-linear-gradient(
+                          to right,
+                          var(--grid-color-line) var(--column-start),
+                          var(--grid-color-line) var(--column-start-line),
+                          var(--grid-color-column) var(--column-start-line),
+                          var(--grid-color-column) var(--column-end),
+                          var(--grid-color-line) var(--column-end),
+                          var(--grid-color-line) var(--column-end-line),
+                          var(--grid-color-gutter) var(--column-end-line),
+                          var(--grid-color-gutter) var(--gutter-end)
+          );
+  --g-gradient-baseline:
+          repeating-linear-gradient(
+                          to bottom,
+                          var(--grid-color-baseline),
+                          var(--grid-color-baseline) var(--line-thickness),
+                          transparent var(--line-thickness),
+                          transparent 20px
+          );
+}
+
+
+html.helper-grid {
+  display: flex;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--document-height, auto);
+  justify-content: center;
+}
+
+.helper-grid-toggle::after {
+  display: inline-block;
+  content: var(--g-media_query);
+  top: 0;
+  left: 0;
+  white-space: pre;
+  text-transform: uppercase;
+  background-color: #0c88b4;
+  color: #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+  z-index: 9999999;
+  position: fixed;
+  font-size: 14px;
+}
+
+html.helper-grid::after {
+  position: fixed;
+  z-index: 1000;
+  content: '';
+  width: calc(100% - 2 * var(--grid-offset));
+  max-width: var(--grid-width-max);
+  min-height: 100vh;
+  background-image: var(--g-gradient-column), var(--g-gradient-baseline);
+  background-position: 0 0;
+  background-size: calc(100% + var(--grid-gutter)) 100vh;
+  pointer-events: none;
+}
+
+html.helper-grid body { /* todo: find another way, leads to errors in certain layouts */
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}

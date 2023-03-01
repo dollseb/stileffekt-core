@@ -1,0 +1,18 @@
+body {
+  color: var(--color-grey-1);
+  font-family: var(--font-default);
+  font-weight: 400;
+  line-height: 1.4;
+  @include fluid(font-size, 16, 30);
+  overflow-x: hidden;
+  background-color: var(--color-white);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  @include fluid(font-size, 25, 30);
+  font-family: var(--font-default);
+  line-height: 1.2;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0;
+}

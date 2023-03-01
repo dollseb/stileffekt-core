@@ -1,0 +1,172 @@
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min !=0, $min, null);
+}
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+@mixin breakpoint($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function strip-unit($number) {
+  @if type-of($number)=='number' and not unitless($number) {
+    @return calc($number / ($number * 0 + 1px));
+  }
+
+  @return $number;
+}
+
+@mixin fluid($property, $min: null, $max: null, $axis: null, $from: 375, $to: 1920) {
+
+  $from: strip-unit($from);
+  $to: strip-unit($to);
+  $min: strip-unit($min);
+  $max: strip-unit($max);
+
+  & {
+    @if ($property == margin or $property == padding or $property == border-width) and ($axis == y or $axis == x) {
+      @if ($axis == x) {
+        @if ($property == border-width) {
+          border-right-width: #{$min}px;
+          border-left-width: #{$min}px;
+
+          @media only screen and (min-width: #{$from}px) {
+            border-right-width: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+            border-left-width: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+          }
+
+          @media only screen and (min-width: #{$to}px) {
+            border-right-width: #{$max}px;
+            border-left-width: #{$max}px;
+          }
+        } @else {
+          #{$property}-right: #{$min}px;
+          #{$property}-left: #{$min}px;
+
+          @media only screen and (min-width: #{$from}px) {
+            #{$property}-right: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+            #{$property}-left: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+          }
+
+          @media only screen and (min-width: #{$to}px) {
+            #{$property}-right: #{$max}px;
+            #{$property}-left: #{$max}px;
+          }
+        }
+      }
+
+      @if ($axis == y) {
+        @if ($property ==border-width) {
+          border-top-width: #{$min}px;
+          border-bottom-width: #{$min}px;
+
+          @media only screen and (min-width: #{$from}px) {
+            border-top-width: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+            border-bottom-width: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+          }
+
+          @media only screen and (min-width: #{$to}px) {
+            border-top-width: #{$max}px;
+            border-bottom-width: #{$max}px;
+          }
+        } @else {
+          #{$property}-top: #{$min}px;
+          #{$property}-bottom: #{$min}px;
+
+          @media only screen and (min-width: #{$from}px) {
+            #{$property}-top: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+            #{$property}-bottom: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+          }
+
+          @media only screen and (min-width: #{$to}px) {
+            #{$property}-top: #{$max}px;
+            #{$property}-bottom: #{$max}px;
+          }
+        }
+      }
+    } @else {
+      @if ($property == border) {
+        @error "border is a shorthand for border-width, border-style, border-color and cannot be used in fluid mixin";
+      }
+
+      @if ($axis) {
+        @error "parameter axis only supported in combination with margin, padding and border-width and cannot be used with property #{$property}";
+      }
+
+      #{$property}: #{$min}px;
+
+      @media only screen and (min-width: #{$from}px) {
+        #{$property}: calc(#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from}));
+      }
+
+      @media only screen and (min-width: #{$to}px) {
+        #{$property}: #{$max}px;
+      }
+    }
+  }
+}
+
+@mixin grid-row($flow: 'row wrap') {
+  & {
+    display: flex;
+    flex-flow: #{$flow};
+    margin-left: calc(var(--grid-gutter) / 2 * -1);
+    margin-right: calc(var(--grid-gutter) / 2 * -1);
+  }
+}
+
+@mixin grid-column($width, $offset: null, $parent: false) {
+  & {
+    width: 1px;
+
+    @if (type-of($parent)=='number') {
+      min-width: calc((100% / #{$parent} * #{$width}) - var(--grid-gutter));
+    } @else {
+      min-width: calc((100% / var(--grid-columns) * #{$width}) - var(--grid-gutter) - 0.1px);
+    }
+
+    margin-right: calc(var(--grid-gutter) / 2);
+
+    @if ($offset) {
+      margin-left: calc((100% / var(--grid-columns) * #{$offset}) + (var(--grid-gutter) / 2));
+    } @else {
+      margin-left: calc(var(--grid-gutter) / 2);
+    }
+  }
+}
+
+@mixin page-padding() {
+  & {
+    padding-left: var(--grid-offset);
+    padding-right: var(--grid-offset);
+  }
+}
+
+@mixin page-width() {
+  & {
+    max-width: var(--grid-width-max);
+    margin: 0 auto;
+  }
+}

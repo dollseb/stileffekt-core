@@ -1,0 +1,28 @@
+// grid settings
+$grid-breakpoints: (
+    xs: 0,
+    s: 768px,
+    m: 1024px,
+    l: 1366px,
+    xl: 1920px,
+    menu: 1024px,
+);
+
+:root {
+
+  //fonts
+  --font-default: 'Gudea', sans-serif;
+
+  //grid
+  --grid-columns: 12;
+  --grid-gutter: 16px;
+  --grid-width-max: 1920px;
+  --grid-color: 190, 100%, 50%;
+  @include fluid(--grid-offset, 24, 48);
+
+  // colors
+  --color-yellow: #F7D346;
+  --color-grey-1: #343434;
+  --color-black: #000000;
+  --color-white: #ffffff;
+}

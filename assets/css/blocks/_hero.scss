@@ -1,0 +1,50 @@
+.block-hero {
+
+  position: relative;
+  height: 100vh;
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba(62, 61, 64, 0.4);
+  }
+
+  .block__inner {
+    @include grid-row();
+    align-items: center;
+    height: 100vh;
+  }
+
+  .hero__scroll {
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    @include fluid(bottom, 32, 48);
+    left: 50%;
+    transform: translateX(-50%);
+    @include fluid(width, 32, 72);
+    @include fluid(height, 32, 72);
+    background-color: var(--color-yellow);
+    border-radius: 50%;
+  }
+
+  .hero__content {
+    @include grid-column(10,1);
+    position: relative;
+    z-index: 3;
+  }
+}
