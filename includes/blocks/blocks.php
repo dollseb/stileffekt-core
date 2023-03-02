@@ -95,6 +95,24 @@ function whitelabel__register_blocks()
 		    ),
 		    'render_template' => 'includes/blocks/widget-text/block.php',
 	    ));
+
+	    acf_register_block_type(array(
+		    'name' => 'widget-brands',
+		    'title' => __('Brands', 'whitelabel'),
+		    'description' => '',
+		    'category' => 'stileffekt-all',
+		    'icon' => 'smiley',
+		    'keywords' => array('brands',),
+		    'align' => 'full',
+		    'mode' => 'edit',
+		    'supports' => array(
+			    'mode' => false,
+			    'align' => false,
+			    'anchor' => true,
+			    'jsx' => true,
+		    ),
+		    'render_template' => 'includes/blocks/widget-brands/block.php',
+	    ));
     }
 }
 
@@ -111,6 +129,7 @@ function whitelabel__allowed_blocks($allowed_block_types, $block_editor_context)
 	        'acf/widget-text',
 	        'acf/widget-languages',
 	        'acf/widget-navigation',
+	        'acf/widget-brands',
         );
     }
 
