@@ -1,4 +1,28 @@
-#footer {
-  @include page-padding();
+.footer {
+  @include fluid(margin-top, 80, 240);
 
+  background-color: var(--color-grey-1);
+
+  &__inner {
+
+  }
+
+  &__widgets {
+    @include page-padding();
+  }
+
+
+  &__socket {
+    @include page-padding();
+
+    .copyright {
+      color: var(--color-white);
+    }
+  }
+
+  &__brands {
+    @include page-padding();
+    background-color: var(--color-white);
+    padding: 48px 0;
+  }
 }
