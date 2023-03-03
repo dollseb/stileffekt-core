@@ -19,17 +19,6 @@
         position: relative;
         @include fluid(margin, 16, 32, x);
 
-        &:first-child {
-          margin-left: auto;
-        }
-
-        &:last-child {
-          margin-right: 0;
-          padding: 4px 16px;
-          background-color: var(--color-yellow);
-          border-radius: 20px;
-        }
-
         a {
 
           display: block;
@@ -52,6 +41,10 @@
           }
         }
 
+        ul {
+          display: none;
+        }
+
         &.current-menu-item,
         &:hover {
           a:before {
@@ -59,8 +52,22 @@
           }
         }
 
-        ul {
-          display: none;
+        &:first-child {
+          margin-left: auto;
+        }
+
+        &:last-child {
+          margin-right: 0;
+          padding: 4px 16px;
+          background-color: var(--color-yellow);
+          border-radius: 20px;
+
+          a {
+            &:before {
+              display: none;
+            }
+          }
+
         }
 
       }
