@@ -18,7 +18,7 @@
         </div>
 
         <div class="footer__socket">
-
+            <div class="footer__width">
             <div class="footer__socket__inner">
 
                 <nav class="navigation">
@@ -42,7 +42,7 @@
                 </div>
 
             </div>
-
+            </div>
         </div>
 
         <div class="footer__brands">

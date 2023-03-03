@@ -3,14 +3,13 @@
   color: var(--color-white);
   background-color: var(--color-grey-1);
 
-  &__inner {
-
+  &__width {
+    @include page-width();
   }
 
   &__widgets {
     @include page-padding();
   }
-
 
   &__socket {
     @include page-padding();
