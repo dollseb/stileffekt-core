@@ -79,12 +79,12 @@ function whitelabel__register_blocks()
 	    ));
 
 	    acf_register_block_type(array(
-		    'name' => 'widget-text',
-		    'title' => __('Text', 'whitelabel'),
+		    'name' => 'widget-contact',
+		    'title' => __('Contact', 'whitelabel'),
 		    'description' => '',
 		    'category' => 'stileffekt-all',
 		    'icon' => 'smiley',
-		    'keywords' => array('text',),
+		    'keywords' => array('contact',),
 		    'align' => 'full',
 		    'mode' => 'edit',
 		    'supports' => array(
@@ -93,9 +93,8 @@ function whitelabel__register_blocks()
 			    'anchor' => true,
 			    'jsx' => true,
 		    ),
-		    'render_template' => 'includes/blocks/widget-text/block.php',
+		    'render_template' => 'includes/blocks/widget-contact/block.php',
 	    ));
-
 	    acf_register_block_type(array(
 		    'name' => 'widget-brands',
 		    'title' => __('Brands', 'whitelabel'),
@@ -129,6 +128,7 @@ function whitelabel__allowed_blocks($allowed_block_types, $block_editor_context)
 	        'acf/widget-text',
 	        'acf/widget-languages',
 	        'acf/widget-navigation',
+	        'acf/widget-contact',
 	        'acf/widget-brands',
         );
     }

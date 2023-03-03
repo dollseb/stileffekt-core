@@ -1,0 +1,57 @@
+.block-contact {
+
+  .block__row {
+    @include grid-row('row wrap')
+  }
+
+  .contact__icon {
+    @include grid-column(12);
+
+    text-align: center;
+    img {
+      @include fluid(width, 24, 48);
+      height: auto;
+    }
+  }
+
+  .contact__headline {
+    @include grid-column(12);
+    @include fluid(margin-top, 24, 48);
+    text-align: center;
+  }
+
+  .contact__text {
+    text-align: center;
+    @include grid-column(12);
+    @include fluid(font-size, 20, 30);
+    @include fluid(margin-top, 48, 96);
+  }
+}
+
+@include breakpoint(s) {
+  .block-contact {
+
+    .contact__headline {
+      @include grid-column(10,1);
+    }
+
+    .contact__text {
+      @include grid-column(10,1);
+    }
+  }
+
+}
+
+@include breakpoint(l) {
+  .block-contact {
+
+    .contact__headline {
+      @include grid-column(8,2);
+    }
+
+    .contact__text {
+      @include grid-column(8,2);
+    }
+  }
+
+}
