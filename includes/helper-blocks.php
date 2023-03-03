@@ -98,7 +98,7 @@ function whitelabel__helper_video( $block_data, $selector = 'video' ): string {
 				$poster = ' poster="' . $block_data['image']['url'] . '"';
 			}
 
-			return '<video' . $poster . ' playsinline loop>' . $source . '</video>';
+			return '<video' . $poster . ' playsinline autoplay loop muted>' . $source . '</video>';
 
 		} else {
 			$iframe = $block_data[$selector];
