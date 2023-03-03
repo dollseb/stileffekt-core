@@ -4,12 +4,6 @@ if (!class_exists('ACF')) {
 	return;
 }
 
-
-if ( file_exists( get_theme_file_path( '/includes/acf/extensions/field-menus.php' ) ) ) {
-	require_once get_theme_file_path( '/includes/acf/extensions/field-menus.php' );
-}
-
-
 /**
  * acf backend visibility
  *
