@@ -1,6 +1,6 @@
 .footer {
   @include fluid(margin-top, 80, 240);
-
+  color: var(--color-white);
   background-color: var(--color-grey-1);
 
   &__inner {
@@ -14,9 +14,34 @@
 
   &__socket {
     @include page-padding();
+    @include fluid(font-size, 12, 16);
+    @include fluid(padding-bottom, 20, 40);
+    text-align: center;
+    &__inner {
+      @include grid-row();
+    }
+    .navigation {
+      @include grid-column(12);
+      ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        column-gap: 32px;
+        li {
+          a {
+            @include fluid(font-size, 12, 16);
+          }
 
+          ul {
+            display: none;
+          }
+        }
+      }
+    }
     .copyright {
+      @include grid-column(12);
       color: var(--color-white);
+      margin-top: 20px;
     }
   }
 
@@ -24,5 +49,24 @@
     @include page-padding();
     background-color: var(--color-white);
     padding: 48px 0;
+    color: var(--color-black);
+  }
+}
+
+@include breakpoint(s) {
+  .footer {
+    &__socket {
+      .navigation {
+        @include grid-column(8);
+        ul {
+          justify-content: flex-start;
+        }
+      }
+      .copyright {
+        margin-top: 0;
+        @include grid-column(4);
+        text-align: right;
+      }
+    }
   }
 }
