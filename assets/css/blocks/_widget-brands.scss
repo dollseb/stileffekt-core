@@ -9,8 +9,8 @@
     text-align: center;
     @include fluid(font-size, 12, 16);
     vertical-align: center;
+    justify-content: center;
     display: flex;
-    align-items: center;
   }
 
   .brands__items {
@@ -41,7 +41,7 @@
   .block-brands {
     .block__row {
       .brands__text {
-        text-align: left;
+        justify-content: flex-start;
       }
       .brands__items {
         justify-content: flex-start;
