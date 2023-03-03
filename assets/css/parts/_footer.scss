@@ -9,6 +9,7 @@
 
   &__widgets {
     @include page-padding();
+    @include fluid(padding, 80, 160);
   }
 
   &__socket {
