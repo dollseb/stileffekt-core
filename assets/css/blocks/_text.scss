@@ -6,12 +6,12 @@
     @include grid-row();
   }
 
-  .text__content {
+  .block__content {
     @include grid-column(12);
   }
 
   &.block-style-2 {
-    .text__content {
+    .block__content {
       @include fluid(font-size, 20, 40);
     }
   }
@@ -19,7 +19,7 @@
 
 @include breakpoint(s) {
   .block-text {
-    .text__content {
+    .block__content {
       @include grid-column(10,1);
     }
   }
@@ -27,7 +27,7 @@
 
 @include breakpoint(m) {
   .block-text {
-    .text__content {
+    .block__content {
       @include grid-column(8,2);
     }
   }

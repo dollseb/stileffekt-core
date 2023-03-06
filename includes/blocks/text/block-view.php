@@ -4,7 +4,7 @@
 
         <div class="block__inner">
 
-            <div class="text__content">
+            <div class="block__content">
 
 	            <?php if ( ! empty( $overline ) ) : ?>
                     <div class="component__overline">
