@@ -1,8 +1,10 @@
 .block-hero {
 
   position: relative;
-  height: 100vh;
-
+  @include reduce(height, 100, 56, 90);
+  &:first-child {
+    margin-top: 0;
+  }
   .hero__image {
     position: absolute;
     inset: 0;

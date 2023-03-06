@@ -170,3 +170,27 @@
     margin: 0 auto;
   }
 }
+
+
+@mixin reduce($property, $base: null, $min: null, $max: null, $axis: null, $from: 375, $to: 1920) {
+
+  $base: strip-unit($base);
+  $from: strip-unit($from);
+  $to: strip-unit($to);
+  $min: strip-unit($min);
+  $max: strip-unit($max);
+
+  & {
+
+    #{$property}: calc(100vh - #{$min}px);
+
+    @media only screen and (min-width: #{$from}px) {
+      #{$property}: calc(100vh - (#{$min}px + #{($max - $min)} * (100vw - #{$from}px) / (#{$to} - #{$from})));
+    }
+
+    @media only screen and (min-width: #{$to}px) {
+      #{$property}: calc(100vh - #{$max}px) ;
+    }
+  }
+
+}
