@@ -1,6 +1,21 @@
-
 const body = document.body;
 
+
+
+document.querySelectorAll('.block-media').forEach(function (element) {
+
+    const slider = element.querySelector('.glide')
+
+    if (slider) {
+        const glide = new Glide(slider, {
+            type: 'carousel',
+            perView: 1,
+        })
+
+        glide.mount();
+    }
+
+})
 
 
 // const navToggle = document.querySelector('header .toggle button')
@@ -13,43 +28,6 @@ const body = document.body;
 //     }
 // });
 //
-// const blockTextSlider = document.querySelectorAll('.block-text-slider');
-//
-// blockTextSlider.forEach(function (element) {
-//
-//     const glideCounter = element.querySelector('.glide__counter .current')
-//
-//     const glide = new Glide(".glide", {
-//         type: 'carousel', perView: 2, breakpoints: {
-//             1023: {
-//                 perView: 1
-//             },
-//         }, classes: {
-//             direction: {
-//                 ltr: 'glide--ltr', rtl: 'glide--rtl'
-//             },
-//             slider: 'glide--slider',
-//             carousel: 'glide--carousel',
-//             swipeable: 'glide--swipeable',
-//             dragging: 'glide--dragging',
-//             cloneSlide: 'glide__slide--clone',
-//             activeNav: 'glide__bullet--active',
-//             activeSlide: 'glide__slide--active',
-//             disabledArrow: 'glide__arrow--disabled'
-//         }
-//     })
-//
-//     glide.mount();
-//
-//     glide.on('mount.before', function () {
-//         glideCounter.textContent = glide.index + 1
-//     })
-//
-//     glide.on('run', function () {
-//         glideCounter.textContent = glide.index + 1
-//     })
-//
-// })
 //
 //
 // const blockPost = document.querySelectorAll('.block-posts');

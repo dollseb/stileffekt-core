@@ -76,9 +76,14 @@ function whitelabel__helper_image( $block_data, $image_size = 'url', $selector =
 		$height = $block_data[ $selector ]['height'];
 	}
 
+	$media_alignment = '';
+	if(!empty($block_data['media_alignment'])) {
+		$media_alignment = 'style="object-position: ' . str_replace('-', ' ', $block_data['media_alignment']) .';"';
+	}
+
 	$alt = ! empty( $block_data[ $selector ]['alt'] ) ? ' alt="' . $block_data[ $selector ]['alt'] . '"' : ' alt=""';
 
-	return '<img src="' . $url . '" width="' . $width . '" height="' . $height . '"' . $alt . ' loading="lazy">';
+	return '<img src="' . $url . '" width="' . $width . '" height="' . $height . '"' . $alt . ' loading="lazy"'. $media_alignment .'>';
 }
 
 

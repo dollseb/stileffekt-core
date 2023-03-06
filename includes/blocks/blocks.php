@@ -79,6 +79,24 @@ function whitelabel__register_blocks()
 	    ));
 
 	    acf_register_block_type(array(
+		    'name' => 'media',
+		    'title' => __('Media', 'whitelabel'),
+		    'description' => '',
+		    'category' => 'stileffekt-all',
+		    'icon' => 'smiley',
+		    'keywords' => array('media', 'slider'),
+		    'align' => 'full',
+		    'mode' => 'edit',
+		    'supports' => array(
+			    'mode' => false,
+			    'align' => false,
+			    'anchor' => true,
+			    'jsx' => true,
+		    ),
+		    'render_template' => 'includes/blocks/media/block.php',
+	    ));
+
+	    acf_register_block_type(array(
 		    'name' => 'widget-contact',
 		    'title' => __('Contact', 'whitelabel'),
 		    'description' => '',
@@ -137,6 +155,7 @@ function whitelabel__allowed_blocks($allowed_block_types, $block_editor_context)
 	    'acf/hero',
 	    'acf/text',
 	    'acf/text-media',
+	    'acf/media'
     );
 }
 

@@ -1,0 +1,24 @@
+.block-media {
+
+  .block__inner {
+    @include grid-row();
+  }
+
+  .block__media {
+    @include grid-column(12);
+  }
+
+  .component__video,
+  .component__image {
+      aspect-ratio: 16/9;
+
+    video,
+    iframe,
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+}
