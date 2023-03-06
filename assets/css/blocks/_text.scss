@@ -25,7 +25,7 @@
   }
 }
 
-@include breakpoint(6) {
+@include breakpoint(m) {
   .block-text {
     .text__content {
       @include grid-column(8,2);
