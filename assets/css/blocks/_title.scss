@@ -1,0 +1,49 @@
+.block-title {
+
+  .block__inner {
+    @include grid-row()
+  }
+
+  .block__headline {
+    @include grid-column(12);
+
+    h1, .h1 {
+      @include fluid(font-size, 40, 100);
+      color: var(--color-black);
+    }
+  }
+
+  .block__content {
+    @include grid-column(12);
+  }
+
+}
+
+@include breakpoint(m) {
+  .block-title {
+    .block__headline {
+      @include grid-column(6);
+    }
+
+    .block__content {
+      @include grid-column(6);
+
+      .component__text {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .block-title {
+    .block__headline {
+      @include grid-column(4);
+    }
+
+    .block__content {
+      @include grid-column(7,1);
+
+    }
+  }
+}
