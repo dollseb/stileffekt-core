@@ -2,9 +2,6 @@
   @include page-padding();
   @include fluid(margin-top, 80, 240);
 
-  &:first-child {
-    margin-top: 0;
-  }
   .block__width {
     @include page-width();
   }
