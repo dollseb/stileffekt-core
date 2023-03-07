@@ -54,8 +54,6 @@ function whitelabel__styles(): void {
 	wp_dequeue_style( 'wc-blocks-style' );
 	wp_dequeue_style( 'classic-theme-styles' );
 
-	wp_enqueue_style( 'glide-core', get_theme_file_uri( '/assets/css/resources/glide.core.min.css' ) );
-	wp_enqueue_style( 'glide-theme', get_theme_file_uri( '/assets/css/resources/glide.theme.min.css' ) );
 	wp_enqueue_style( 'styles', get_theme_file_uri( '/assets/css/styles.css' ) );
 }
 
