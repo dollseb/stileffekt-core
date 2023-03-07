@@ -1,4 +1,4 @@
-.block-contact {
+.block-contact.widget {
 
   .block__row {
     @include grid-row('row wrap')
@@ -29,7 +29,7 @@
 }
 
 @include breakpoint(s) {
-  .block-contact {
+  .block-contact.widget {
 
     .contact__headline {
       @include grid-column(10,1);
@@ -43,7 +43,7 @@
 }
 
 @include breakpoint(l) {
-  .block-contact {
+  .block-contact.widget {
 
     .contact__headline {
       @include grid-column(8,2);

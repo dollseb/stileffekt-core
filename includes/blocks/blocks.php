@@ -131,6 +131,24 @@ function whitelabel__register_blocks() {
 		) );
 
 		acf_register_block_type( array(
+			'name'            => 'contact',
+			'title'           => __( 'Contact', 'whitelabel' ),
+			'description'     => '',
+			'category'        => 'stileffekt-all',
+			'icon'            => 'smiley',
+			'keywords'        => array( 'contact' ),
+			'align'           => 'full',
+			'mode'            => 'edit',
+			'supports'        => array(
+				'mode'   => false,
+				'align'  => false,
+				'anchor' => true,
+				'jsx'    => true,
+			),
+			'render_template' => 'includes/blocks/contact/block.php',
+		) );
+
+		acf_register_block_type( array(
 			'name'            => 'widget-contact',
 			'title'           => __( 'Contact', 'whitelabel' ),
 			'description'     => '',
@@ -191,6 +209,7 @@ function whitelabel__allowed_blocks( $allowed_block_types, $block_editor_context
 		'acf/media',
 		'acf/title',
 		'acf/employees',
+		'acf/contact',
 	);
 }
 
