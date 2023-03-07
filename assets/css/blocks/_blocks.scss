@@ -25,6 +25,11 @@
       }
     }
   }
+  .employee__name {
+    span {
+      background: linear-gradient(179deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 64%, var(--color-yellow) 64%, var(--color-yellow) 80%, rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+    }
+  }
 
   .component__overline + .component__headline {
     @include fluid(margin-top, 8, 16);

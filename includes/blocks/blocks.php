@@ -95,6 +95,24 @@ function whitelabel__register_blocks() {
 		) );
 
 		acf_register_block_type( array(
+			'name'            => 'employees',
+			'title'           => __( 'Employees', 'whitelabel' ),
+			'description'     => '',
+			'category'        => 'stileffekt-all',
+			'icon'            => 'smiley',
+			'keywords'        => array( 'employees', ),
+			'align'           => 'full',
+			'mode'            => 'edit',
+			'supports'        => array(
+				'mode'   => false,
+				'align'  => false,
+				'anchor' => true,
+				'jsx'    => true,
+			),
+			'render_template' => 'includes/blocks/employees/block.php',
+		) );
+
+		acf_register_block_type( array(
 			'name'            => 'title',
 			'title'           => __( 'Title', 'whitelabel' ),
 			'description'     => '',
@@ -172,6 +190,7 @@ function whitelabel__allowed_blocks( $allowed_block_types, $block_editor_context
 		'acf/text-media',
 		'acf/media',
 		'acf/title',
+		'acf/employees',
 	);
 }
 
